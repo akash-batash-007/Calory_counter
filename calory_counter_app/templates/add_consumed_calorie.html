@@ -1,0 +1,16 @@
+{% extends 'master/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block bodyContent %}
+    <h1 class="py-3">Add Calorie Consumed</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+
+        {{form_data | crispy}}
+
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+{% endblock %}

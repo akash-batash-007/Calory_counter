@@ -1,0 +1,36 @@
+{% extends 'master/base.html' %}
+
+{% block bodyContent %}
+    <h1 class="py-3">Calorie List</h1>
+
+    <a href="{% url 'add_consumed_calorie' %}" class="btn btn-primary ">Add Calorie Consumed</a>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>SL</th>
+                <th>Item Name</th>
+                <th>Consumed Calorie</th>
+                <th>Added at</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for each_data in data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{each_data.item_name}}</td>
+                    <td>{{each_data.calorie}}</td>
+                    <td>{{each_data.created_at}}</td>
+                    <td>
+                        <a href="{% url 'edit_consumed_calorie' each_data.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'delete_consumed_calorie' each_data.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

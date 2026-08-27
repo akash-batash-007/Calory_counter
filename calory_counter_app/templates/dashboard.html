@@ -1,0 +1,68 @@
+{% extends 'master/base.html' %}
+
+{% block bodyContent %}
+    <h1 class="py-3">Welcome, {{request.user.username}}</h1>
+
+
+    <div class="col card text-bg-secondary mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{suggestion}}</h5>
+        </div>
+    </div>
+
+    <h4 class="mt-5">Your Daily Consumed Calorie</h4>
+    
+    <div class="container mt-5">
+        <div class="row gap-3">
+            <div class="col card text-bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Consumed Calorie</h5>
+                    <p class="card-text fs-1 py-5 text-center">{{total_consumed_calories}} kcal</p>
+                </div>
+            </div>
+            <div class="col card text-bg-dark mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Required Calorie</h5>
+                    <p class="card-text fs-1 py-5 text-center">{{calorie_required}} kcal</p>
+                </div>
+            </div>
+            <div class="col card text-bg-warning mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Less/More Calories</h5>
+                    <p class="card-text fs-1 py-5 text-center">{{less_more}} kcal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mt-5 ma-5">Today Calorie Consumed</h4>
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>SL</th>
+                <th>Item Name</th>
+                <th>Consumed Calorie</th>
+                <th>Added at</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for each_data in today_consumed_data %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{each_data.item_name}}</td>
+                    <td>{{each_data.calorie}}</td>
+                    <td>{{each_data.created_at}}</td>
+                    <td>
+                        <a href="{% url 'edit_consumed_calorie' each_data.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'delete_consumed_calorie' each_data.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock bodyContent %}

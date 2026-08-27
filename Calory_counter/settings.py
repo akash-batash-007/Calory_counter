@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'calory_counter_app'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,8 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+
+AUTH_USER_MODEL = 'calory_counter_app.customUser'
+LOGIN_URL = 'login_view'

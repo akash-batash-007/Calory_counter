@@ -1,0 +1,30 @@
+{% extends 'master/base.html' %}
+
+{% block bodyContent %}
+    <h1 class="py-3">Profile Information</h1>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title py-2 fs-3"><strong>Profile Username:</strong> {{request.user.username}}</h5>
+            <p class="card-text fs-5"><strong>Full Name:</strong> {{user_data.name}}</p>
+            <p class="card-text fs-5"><strong>Age:</strong> {{user_data.age}} years</p>
+            <p class="card-text fs-5"><strong>Gender:</strong> {{user_data.gender}}</p>
+            <p class="card-text fs-5"><strong>Height:</strong> {{user_data.height}} cm</p>
+            <p class="card-text fs-5"><strong>Weight:</strong> {{user_data.weight}} kg</p>
+            <p class="card-text fs-5"><strong>BMR:</strong> {{user_data.bmr}} kcal</p>
+
+            <div class="row g-3">
+                <div class="col-auto">
+                    <a href="{% url 'profile_update' %}" class="btn btn-primary">Update Profile</a>
+                </div>
+                {% comment %} <div class="col-auto">
+                    <a href="{% url 'create_job' %}" class="btn btn-success">Create Job</a>
+                </div>
+                <div class="col-auto">
+                    <a href="{% url 'display_job' %}" class="btn btn-warning">My Created Jobs</a>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
